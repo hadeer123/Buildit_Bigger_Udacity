@@ -1,4 +1,4 @@
-package com.example.displayjokelib;
+package com.example.displayjokeslib;
 
 import org.junit.Test;
 
