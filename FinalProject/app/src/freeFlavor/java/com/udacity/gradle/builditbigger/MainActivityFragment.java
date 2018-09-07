@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.free;
 
 import android.app.UiAutomation;
 import android.content.Intent;
@@ -12,12 +12,15 @@ import android.widget.Button;
 import com.example.displayjokeslib.DisplayJokeActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.udacity.gradle.builditbigger.FetchJokeAsyncTask;
+import com.udacity.gradle.builditbigger.MainActivity;
+import com.udacity.gradle.builditbigger.R;
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask.ToastListener{
+public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask.ToastListener {
     Button button;
     public MainActivityFragment() {
     }

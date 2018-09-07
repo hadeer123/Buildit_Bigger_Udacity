@@ -18,10 +18,6 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
         listener = toastListener;
     }
 
-    public FetchJokeAsyncTask() {
-
-    }
-
     public interface ToastListener {
         void onTaskFinished(String string);
     }
