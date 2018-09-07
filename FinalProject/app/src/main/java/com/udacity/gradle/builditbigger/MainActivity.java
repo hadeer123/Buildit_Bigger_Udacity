@@ -43,4 +43,7 @@ public class MainActivity extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
 
+    public void tellJoke(FetchJokeAsyncTask.ToastListener listener){
+        new FetchJokeAsyncTask(listener).execute();
+    }
 }

@@ -31,7 +31,8 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               tellJoke();
+                getJoke();
+
             }
         });
         // Create an ad request. Check logcat output for the hashed device ID to
@@ -43,10 +44,9 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
         mAdView.loadAd(adRequest);
         return root;
     }
-
-    public void tellJoke() {
-        new FetchJokeAsyncTask(this).execute();
-    }
+    private void getJoke(){
+        ((MainActivity)getActivity()).tellJoke(this);
+}
 
     @Override
     public void onTaskFinished(String string) {

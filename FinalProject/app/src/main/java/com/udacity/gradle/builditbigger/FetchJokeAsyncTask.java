@@ -14,11 +14,14 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
     private static JokesApi myApiService = null;
     private ToastListener listener;
 
-
     public FetchJokeAsyncTask(ToastListener toastListener) {
         listener = toastListener;
+    }
+
+    public FetchJokeAsyncTask() {
 
     }
+
     public interface ToastListener {
         void onTaskFinished(String string);
     }
@@ -56,6 +59,7 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        listener.onTaskFinished(result);
+        if(listener !=null)
+            listener.onTaskFinished(result);
     }
 }
