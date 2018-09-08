@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.example.displayjokeslib.DisplayJokeActivity;
 import com.google.android.gms.ads.AdRequest;
@@ -22,6 +23,7 @@ import com.udacity.gradle.builditbigger.R;
  */
 public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask.ToastListener {
     Button button;
+    ProgressBar progressBar;
     public MainActivityFragment() {
     }
 
@@ -29,6 +31,8 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
+        progressBar = root.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         button = root.findViewById(R.id.tellJoke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,10 +45,12 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
     }
     private void getJoke(){
         ((MainActivity)getActivity()).tellJoke(this);
-}
+        progressBar.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public void onTaskFinished(String string) {
+        progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(getActivity(), DisplayJokeActivity.class);
         intent.putExtra(DisplayJokeActivity.JOKE_INTENT, string);
         this.startActivity(intent);
