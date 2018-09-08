@@ -20,3 +20,22 @@ allprojects {
         google()
     }
 }
+
+task gCloudGradleTest (dependsOn: [":backend:appengineRun", ":app:connectedCheck"]) {
+
+    evaluationDependsOn ":backend"
+
+    // get tasks
+    def functionalTest = tasks.getByPath(":app:connectedCheck")
+    def appEngine = tasks.getByPath(":backend:appengineRun")
+
+    // set execution order
+    appEngine.mustRunAfter functionalTest
+
+    // make sure task gets completed by server shutdown
+    finalizedBy tasks.getByPath(":backend:appengineStop")
+
+    doLast {
+        println 'gCloudGradleTest completed'
+    }
+}
