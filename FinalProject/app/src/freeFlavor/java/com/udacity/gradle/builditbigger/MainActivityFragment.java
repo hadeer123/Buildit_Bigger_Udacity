@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger;
 
-import android.app.UiAutomation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,6 +25,7 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
     Button button;
     ProgressBar progressBar;
     private InterstitialAd mInterstitialAd;
+
     public MainActivityFragment() {
     }
 
@@ -78,10 +78,11 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
         mAdView.loadAd(adRequest);
         return root;
     }
-    private void getJoke(){
+
+    private void getJoke() {
         progressBar.setVisibility(View.VISIBLE);
-        ((MainActivity)getActivity()).tellJoke(this);
-}
+        ((MainActivity) getActivity()).tellJoke(this);
+    }
 
     private void showInterstitial() {
         // Show the ad if it's ready.
@@ -89,6 +90,7 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
             mInterstitialAd.show();
         }
     }
+
     @Override
     public void onTaskFinished(String string) {
         Intent intent = new Intent(getActivity(), DisplayJokeActivity.class);

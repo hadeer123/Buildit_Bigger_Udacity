@@ -1,12 +1,12 @@
 package com.udacity.gradle.builditbigger;
+
 import android.os.AsyncTask;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.time.the.all.joking.jokesApi.JokesApi;
-
-
 
 import java.io.IOException;
 
@@ -16,10 +16,6 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
 
     public FetchJokeAsyncTask(ToastListener toastListener) {
         listener = toastListener;
-    }
-
-    public interface ToastListener {
-        void onTaskFinished(String string);
     }
 
     @Override
@@ -55,7 +51,11 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        if(listener !=null)
+        if (listener != null)
             listener.onTaskFinished(result);
+    }
+
+    public interface ToastListener {
+        void onTaskFinished(String string);
     }
 }
