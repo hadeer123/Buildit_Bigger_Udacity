@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger;
 
-import android.app.UiAutomation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,8 +10,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.example.displayjokeslib.DisplayJokeActivity;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.udacity.gradle.builditbigger.FetchJokeAsyncTask;
 import com.udacity.gradle.builditbigger.MainActivity;
 import com.udacity.gradle.builditbigger.R;
@@ -24,6 +21,7 @@ import com.udacity.gradle.builditbigger.R;
 public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask.ToastListener {
     Button button;
     ProgressBar progressBar;
+
     public MainActivityFragment() {
     }
 
@@ -43,8 +41,9 @@ public class MainActivityFragment extends Fragment implements FetchJokeAsyncTask
         });
         return root;
     }
-    private void getJoke(){
-        ((MainActivity)getActivity()).tellJoke(this);
+
+    private void getJoke() {
+        ((MainActivity) getActivity()).tellJoke(this);
         progressBar.setVisibility(View.VISIBLE);
     }
 
