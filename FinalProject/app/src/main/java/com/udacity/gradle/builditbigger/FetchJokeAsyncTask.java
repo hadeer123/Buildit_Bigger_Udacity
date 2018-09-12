@@ -1,6 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
     private static JokesApi myApiService = null;
+    private static final String LOG_TAG = FetchJokeAsyncTask.class.getName();
     private ToastListener listener;
 
     public FetchJokeAsyncTask(ToastListener toastListener) {
@@ -45,7 +47,8 @@ public class FetchJokeAsyncTask extends AsyncTask<Void, Void, String> {
         try {
             return myApiService.tellMeAJoke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            Log.e(LOG_TAG, e.getMessage());
+            return null;
         }
     }
 

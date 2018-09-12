@@ -21,12 +21,13 @@ public class AsyncTaskTest {
 
         FetchJokeAsyncTask asyncTask = new FetchJokeAsyncTask(null);
         asyncTask.execute();
-        String result;
+        String result = null;
         try {
             result = asyncTask.get();
             Log.d(LOG_TAG, "Retrieved a non-empty string successfully: " + result);
         } catch (Exception e) {
+            Log.e(LOG_TAG, e.getMessage());
         }
-        assertNotNull(asyncTask);
+        assertNotNull(result);
     }
 }
